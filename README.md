@@ -23,12 +23,8 @@ Um mit CoreLab Source Code zu beginnen, folgen Sie bitte den nachstehenden Anwei
 
 Wir freuen uns über Beiträge von der Community! Wenn Sie zur Verbesserung des CoreLab Source Codes beitragen möchten, werfen Sie bitte einen Blick auf unsere `CONTRIBUTING.md` für Richtlinien zum Mitmachen.
 
-## Lizenz 📄
-
-Der CoreLab Source Code ist unter der MIT Lizenz veröffentlicht. Für weitere Details, sehen Sie bitte die [LIZENZ](LICENSE) Datei an.
-
 ## Kontakt 📬
 
-Für Fragen, Anregungen oder professionelle Anfragen kontaktieren Sie uns bitte über [email@example.com](mailto:email@example.com).
+Für Fragen, Anregungen oder professionelle Anfragen kontaktieren Sie uns bitte über [support@corelab.uk](mailto:support@corelab.uk).
 
 Vielen Dank für Ihr Interesse an CoreLab! Gemeinsam treiben wir die Zukunft der Robotik und intelligenten Systeme voran. 🌟
