@@ -4,7 +4,45 @@ import cv2
 import time
 import csv
 from datetime import datetime, timedelta
+import serial
+import serial.tools.list_ports
+import os
+import random
+satz_liste = [
+    "-angry",
+   # "-std",
+    "-huh",
+    "-sad",
+  #  "-music",
+    "-quest"
+]
+zufallszahl = random.randint(1, 1000)
+#Serielle Schnittstelle 
+def list_serial_ports():
+    ports = serial.tools.list_ports.comports()
+    available_ports = []
+    for port, desc, hwid in sorted(ports):
+        print(f"({len(available_ports) + 1}) {desc} - {port}")
+        available_ports.append(port)
+    return available_ports
 
+def select_serial_port():
+    available_ports = list_serial_ports()
+    if not available_ports:
+        print("Keine seriellen Ports gefunden.")
+        return None
+    choice = input("Wählen Sie einen Port aus (Nummer): ")
+    try:
+        index = int(choice) - 1
+        if index >= 0 and index < len(available_ports):
+            return available_ports[index]
+        else:
+            print("Ungültige Auswahl.")
+            return None
+    except ValueError:
+        print("Bitte eine Zahl eingeben.")
+        return None
+    
 # Laden der COCO-Klassennamen
 classNames = []
 classFile = "coco.names"
@@ -31,7 +69,17 @@ csv_writer = csv.writer(csv_file)
 csv_writer.writerow(["Object ID", "Duration (seconds)", "Time"])
 
 try:
+    port = select_serial_port()
+    if port:
+        ser = serial.Serial(port, 9600, timeout=1)
+        print(f"Verbunden mit {port}. Geben Sie 'exit' ein, um zu beenden.")
+        os.system("clear")
+        print("Application Programming Interfaces (API) \r\n-music: Music Interface                              \r\n-quest: QuestionMark Eye         \r\n-std: Standart Eye Mode\r\n-sad: Sad Eye\r\n-huh: Surprised Eye\r\n-angry: Angry Eye\r\n\r\nConfigs:\r\n-cnf: Config Mode\r\ndebug_on: Debug Mode\r\ndebug_off: Simple Mode                 \r\n")
+        time.sleep(25)  # Warten auf die Initialisierung der seriellen Verbindung
+        ser.flushInput()  # Eingabepuffer leeren
+        
     while True:
+        
         # Erfassen eines Frames und Konvertieren in ein NumPy-Array
         frame = picam2.capture_array()
         
@@ -49,14 +97,22 @@ try:
                 classId = int(detection[1])
                 className = classNames[classId - 1]
                
-                if className in ["person", "hand", "arm"]: 
+                if className in ["person"]: 
                     box = detection[3:7] * np.array([640, 480, 640, 480])
                     (startX, startY, endX, endY) = box.astype("int")
                     cv2.rectangle(frame_rgb, (startX, startY), (endX, endY), (0, 255, 0), 2)
                     cv2.putText(frame_rgb, className.capitalize(), (startX, startY - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-                    
+                    if zufallszahl <= 10:
+                        zufaelliger_satz = random.choice(satz_liste)
+                        print(zufaelliger_satz)
+                        ser.write((zufaelliger_satz + '\n').encode())  # '\n' als Endezeichen hinzufügen
+                        ser.flush()  # Stellt sicher, dass der Befehl gesendet wird
+                    else:
+                        # 70% Chance, dass nichts passiert
+                        print("Kein Satz ausgewählt.")
                     # Aktualisieren der erkannten Objekte und deren Aufenthaltsdauer
                     object_id = f"{className}({startX},{startY})"  
+                    time.sleep(0.5)
                     if object_id not in tracked_objects:
                         tracked_objects[object_id] = {"start_time": time.time()} 
                     else:
@@ -71,6 +127,7 @@ try:
             duration_formatted = str(timedelta(seconds=duration_seconds))  # Formatierung der Aufenthaltsdauer
             start_time_str = datetime.fromtimestamp(info["start_time"]).strftime("%H:%M:%S:%f")
             print(f"{object_id}: {duration_formatted}, {start_time_str}")  # Ausgabe in Konsole
+            
             csv_writer.writerow([object_id, duration_formatted, start_time_str])  # Schreiben in CSV-Datei
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
