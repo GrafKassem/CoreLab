@@ -1,50 +1,50 @@
-# CoreLab Source Code 🛠️ (Intern)
+# CoreLab Source Code 🌟 (Open Source)
 
-## Vertrauliche Information
+## Introduction 📢
 
-Dieses Dokument und der zugehörige Source Code sind **streng vertraulich**. Die Weitergabe, Kopie oder jegliche Form der Veröffentlichung dieser Informationen ohne explizite Genehmigung ist strengstens untersagt.
+Welcome to the CoreLab Project! We're excited to make our source code publicly available for the first time under an open-source license. Our mission is to develop specialized operating systems for robotics and embedded system platforms, and we invite the global developer community to contribute.
 
-## Projektübersicht
+## Project Overview 🚀
 
-Das CoreLab-Projekt entwickelt spezialisierte Betriebssysteme für unsere Robotik- und Embedded-System-Plattformen:
+The CoreLab Project focuses on creating robust operating systems for a variety of platforms:
 
-- **ArduinoOS**: Für die Robotiksteuerung.
-- **CoreLabOS**: Für die Integration und Steuerung auf Raspberry Pi-Geräten.
+- **ArduinoOS**: Tailored for robotics control.
+- **CoreLabOS**: Designed for integration and control on Raspberry Pi devices.
 
-## Entwicklungsumgebung
+## Getting Started 🛠️
 
-Stellen Sie sicher, dass Ihre Entwicklungsumgebung folgende Voraussetzungen erfüllt:
+To get started with contributing or using our software, please ensure your development environment meets the following requirements:
 
-- Empfohlene IDEs: [VS Code](https://code.visualstudio.com/), [Arduino IDE](https://www.arduino.cc/en/Main/Software)
-- Abhängigkeiten: Siehe `dependencies.md` im jeweiligen OS-Verzeichnis.
+- Recommended IDEs: [VS Code](https://code.visualstudio.com/), [Arduino IDE](https://www.arduino.cc/en/Main/Software)
+- Dependencies: Refer to `dependencies.md` in the respective OS directory for details.
 
-## Installation und Konfiguration
+## Installation and Configuration 🔧
 
-1. Das Repository ist auf unserem internen Git-Server gehostet. Zugang nur mit entsprechenden Berechtigungen.
-2. Für Installationsanleitungen, siehe die `INSTALL.md` Datei im jeweiligen Betriebssystemverzeichnis.
+1. Our repository is now hosted on GitHub. Access is open to everyone.
+2. For installation instructions, please see the `INSTALL.md` file in the respective operating system directory.
 
-## Sicherheitshinweise
+## Security 🛡️
 
-Beachten Sie beim Umgang mit dem Source Code die folgenden Sicherheitshinweise:
+We take security seriously. When interacting with our source code, please:
 
-- Keine unautorisierten Kopien des Source Codes erstellen.
-- Zugriffskontrollen und Berechtigungen regelmäßig überprüfen.
-- Bei Verdacht auf Sicherheitslücken sofort das Sicherheitsteam informieren.
+- Do not create unauthorized copies of the source code.
+- Regularly review access controls and permissions.
+- Immediately report any suspected security vulnerabilities to our security team.
 
-## Beitrag
+## Contributing 💡
 
-Interne Beiträge sind willkommen und wichtig für die Weiterentwicklung des Projekts. Bevor Sie Änderungen vornehmen:
+We welcome contributions from the community! To contribute:
 
-- Diskutieren Sie größere Änderungen vorab im Team.
-- Stellen Sie Pull Requests für Überprüfungen bereit.
-- Halten Sie sich an die im `CONTRIBUTING.md` festgelegten Richtlinien.
+- Discuss significant changes by opening an issue first.
+- Submit pull requests for review.
+- Follow the guidelines outlined in `CONTRIBUTING.md`.
 
-## Lizenz
+## License 📄
 
-Dieses Projekt und alle zugehörigen Materialien sind Eigentum der [Firmenname] und dürfen nur gemäß den internen Richtlinien verwendet werden.
+This project is now open source and available under the [MIT License](LICENSE.md). We believe in the power of open source to foster innovation and collaboration.
 
-## Kontakt
+## Contact 📬
 
-Bei Fragen oder für weitere Informationen wenden Sie sich bitte an das Projektmanagement-Team unter [support@corelab.uk](mailto:support@corelab.uk).
+For questions or more information, please contact our project management team at [support@grafkassem.uk](mailto:support@grafkassem.uk).
 
-**Wichtig:** Halten Sie alle Informationen zu diesem Projekt streng vertraulich.
+Let's build something great together! 🌍🤝
