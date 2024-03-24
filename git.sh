@@ -1,3 +1,3 @@
 git add .
 git commit -m "default-push | K.Farhat(ADMIN)"
-git push origin main --force-with-lease
+git push --force-with-lease origin main 
