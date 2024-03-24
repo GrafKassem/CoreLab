@@ -8,15 +8,16 @@ import serial
 import serial.tools.list_ports
 import os
 import random
+import secrets
 satz_liste = [
     "-angry",
    # "-std",
     "-huh",
     "-sad",
   #  "-music",
-    "-quest"
+ #  "-quest"
 ]
-zufallszahl = random.randint(1, 1000)
+
 #Serielle Schnittstelle 
 def list_serial_ports():
     ports = serial.tools.list_ports.comports()
@@ -75,11 +76,26 @@ try:
         print(f"Verbunden mit {port}. Geben Sie 'exit' ein, um zu beenden.")
         os.system("clear")
         print("Application Programming Interfaces (API) \r\n-music: Music Interface                              \r\n-quest: QuestionMark Eye         \r\n-std: Standart Eye Mode\r\n-sad: Sad Eye\r\n-huh: Surprised Eye\r\n-angry: Angry Eye\r\n\r\nConfigs:\r\n-cnf: Config Mode\r\ndebug_on: Debug Mode\r\ndebug_off: Simple Mode                 \r\n")
-        time.sleep(25)  # Warten auf die Initialisierung der seriellen Verbindung
+        time.sleep(10)  # Warten auf die Initialisierung der seriellen Verbindung
         ser.flushInput()  # Eingabepuffer leeren
         
     while True:
-        
+        token1 = secrets.randbelow(110)
+        token2 = secrets.randbelow(99)
+        token3 = secrets.randbelow(100)
+        token4 = secrets.randbelow(60)
+
+        # Führen Sie eine Reihe von Operationen durch
+        # Multiplikation -> Subtraktion -> Division, bleiben Sie unter 250
+        # Beispiel: ((token1 * token2) - token3) / token4
+        # Achten Sie darauf, Division durch Null zu vermeiden und das Ergebnis < 250 zu halten
+
+        resultat = ((token1 * token2) - token3)
+        if token4 != 0:  # Vermeiden Sie Division durch Null
+            resultat /= token4
+
+        # Stellen Sie sicher, dass das Ergebnis unter 250 bleibt
+        resultat = resultat if resultat < 250 else 249
         # Erfassen eines Frames und Konvertieren in ein NumPy-Array
         frame = picam2.capture_array()
         
@@ -102,7 +118,8 @@ try:
                     (startX, startY, endX, endY) = box.astype("int")
                     cv2.rectangle(frame_rgb, (startX, startY), (endX, endY), (0, 255, 0), 2)
                     cv2.putText(frame_rgb, className.capitalize(), (startX, startY - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-                    if zufallszahl <= 10:
+                    print(f"Token1: {token1}, Token2: {token2}, Token3: {token3}, Token4: {token4}, Ergebnis: {resultat}")
+                    if resultat <= 60:
                         zufaelliger_satz = random.choice(satz_liste)
                         print(zufaelliger_satz)
                         ser.write((zufaelliger_satz + '\n').encode())  # '\n' als Endezeichen hinzufügen
