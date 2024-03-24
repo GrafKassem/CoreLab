@@ -1,3 +1,3 @@
 git add .
-git commit -m "default-push | K.Farhat(ADMIN)"
+git commit -m "default-push"
 git push --force origin main 
